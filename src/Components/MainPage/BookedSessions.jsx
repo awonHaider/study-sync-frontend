@@ -1,11 +1,38 @@
 import React, { useState } from "react";
 
-const BookedSessions = ({ sessions }) => {
+const BookedSessions = () => {
+  const sessionsData = [
+    {
+      date: "September 5, 2024 • 11:00 AM - 12:00 PM",
+      title: "Tech Mentorship Class",
+      organizerImage:
+        "https://images.unsplash.com/photo-1519456264917-42d0aa2e0625?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      organizerName: "Hafisat Hassan",
+      status: "Pending Confirmation",
+    },
+    {
+      date: "September 5, 2024 • 11:00 AM - 12:00 PM",
+      title: "Tech Mentorship Class",
+      organizerImage:
+        "https://images.unsplash.com/photo-1519456264917-42d0aa2e0625?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      organizerName: "Hafisat Hassan",
+      status: "Confirmed",
+    },
+    {
+      date: "September 5, 2024 • 11:00 AM - 12:00 PM",
+      title: "Tech Mentorship Class",
+      organizerImage:
+        "https://images.unsplash.com/photo-1519456264917-42d0aa2e0625?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      organizerName: "Hafisat Hassan",
+      status: "Confirmed",
+    },
+  ];
+
   return (
     <div className="p-6">
       <h2 className="text-xl font-semibold mb-4">Booked Sessions</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {sessions.map((session, index) => (
+        {sessionsData.map((session, index) => (
           <div
             key={index}
             className="border border-[#65B2FB] rounded-lg p-4 bg-blue-50"

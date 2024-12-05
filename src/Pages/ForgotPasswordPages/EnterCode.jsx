@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../Layout/Homepage/header";
 
-const ForgotPassword = () => {
+const EnterCode = () => {
   const images = [
     "https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg",
     "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
@@ -19,11 +19,14 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <Header />
+      <Header></Header>
+
       <section>
         <div className="container mx-auto">
+          {/* Main Container */}
           <div className="lg:w-[80%] mx-3 md:mx-6 lg:mx-auto grid grid-cols-7 gap-5 border border-gray-200 shadow-sm rounded-xl">
-            <div className=" h-full hidden lg:flex rounded-xl col-span-7 lg:col-span-3 relative">
+            {/* left Side - Cover Image */}
+            <div className="  hidden lg:flex rounded-xl col-span-7 lg:col-span-3 relative">
               <div className="container mx-auto p-4">
                 {/* Gallery Section */}
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -39,6 +42,7 @@ const ForgotPassword = () => {
                 </div>
               </div>
             </div>
+            {/* Right Side - Verify Email */}
             <div className="h-full col-span-7 lg:col-span-4 flex ">
               <div className="w-[100%] bg-white p-4 lg:p-8 rounded-xl ">
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4">
@@ -46,23 +50,51 @@ const ForgotPassword = () => {
                 </h2>
                 <div className="flex gap-4">
                   <p className="mb-6 text-[#666666]">
-                    Kindly enter your email address in the field below !
+                    Enter the code sent to your email address to set a new
+                    password !
                   </p>
                 </div>
                 <form className="space-y-6">
-                  <input
-                    type="email"
-                    placeholder="Email address"
-                    className="w-full border border-gray-300 rounded-lg p-3"
-                  />
+                  <div className="flex space-x-4 md:mb-6">
+                    <input
+                      type="text"
+                      className="w-12 h-12 text-center text-xl border border-gray-300 rounded-md focus:outline-none"
+                      maxLength="1"
+                      readOnly
+                    />
+                    <input
+                      type="text"
+                      className="w-12 h-12 text-center text-xl border border-gray-300 rounded-md focus:outline-none"
+                      maxLength="1"
+                      readOnly
+                    />
+                    <input
+                      type="text"
+                      className="w-12 h-12 text-center text-xl border border-gray-300 rounded-md focus:outline-none"
+                      maxLength="1"
+                      readOnly
+                    />
+                    <input
+                      type="text"
+                      className="w-12 h-12 text-center text-xl border border-gray-300 rounded-md focus:outline-none"
+                      maxLength="1"
+                      readOnly
+                    />
+                  </div>
 
                   <button
                     type="submit"
                     className="w-full bg-blue-600 text-white rounded-full py-3 font-semibold"
                   >
-                    Create Account
+                    Next
                   </button>
                 </form>
+                <p className="text-center text-gray-600 mt-4">
+                  Didn’t See Code?{" "}
+                  <button className="text-blue-500 hover:underline">
+                    Resend
+                  </button>
+                </p>
               </div>
             </div>
           </div>
@@ -72,4 +104,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default EnterCode;
