@@ -1,11 +1,9 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
 import Profile from "./Profile";
 import NotificationSettings from "./NotificationSettings";
 import AccountPrivacy from "./AccountPrivacy";
 import Support from "./Support";
-import { IoMdClose } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa6";
 import { FiBell } from "react-icons/fi";
 import { MdOutlinePrivacyTip } from "react-icons/md";

@@ -4,7 +4,7 @@ import JoinUsSectionCover from "../../Images/Homepage/JoinUsSectionCover.png";
 const JoinUs = () => {
   return (
     <section
-      className="bg-cover bg-center py-20 mt-14 mb-10"
+      className="bg-cover bg-center py-20 mt-14"
       style={{ backgroundImage: `url(${JoinUsSectionCover})` }}
     >
       <div className="container mx-auto flex items-center justify-start px-8">

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
-import successIcon from "../../Images/ForgotPasswordPages/successIcon.png";
+import successIcon from "../../Images/ForgotPassword/successIcon.png";
 import { PiLinkSimple } from "react-icons/pi";
 import { HiMiniClipboardDocument } from "react-icons/hi2";
 import { IoMdClose } from "react-icons/io";
+import ToggleSwitch from "./ToggleSwitch";
 
 const CreateSession = () => {
   const [isCreateGroupPopupVisible, setCreateGroupPopupVisible] =
@@ -42,7 +43,7 @@ const CreateSession = () => {
               className="bg-blue-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-blue-700"
               onClick={() => handleCreateGroupClick()}
             >
-              <span className="font-[500]">Create a group</span>
+              <span className="font-[500]">Create a Session</span>
               <FaArrowRight />
             </button>
           </div>
@@ -54,10 +55,10 @@ const CreateSession = () => {
                 id="create-group-overlay"
                 className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 "
               >
-                <div className="bg-white rounded-lg shadow-lg w-[37%] p-6">
+                <div className="bg-white rounded-lg shadow-lg w-[45%] p-6 h-[90vh] overflow-auto">
                   <div className="flex flex-row ">
                     <h2 className="text-2xl font-semibold mb-4 h-[35px] flex-1">
-                      Create a group
+                      Create a Session
                     </h2>
 
                     <button
@@ -74,6 +75,9 @@ const CreateSession = () => {
                     lectus.
                   </p>
                   <form>
+                    <div className="mb-4 border border-gray-300 rounded-lg p-2 flex justify-center">
+                      <ToggleSwitch />
+                    </div>
                     <div className="mb-4">
                       {/* <label className="block text-sm font-medium mb-1">
                             Session Topic

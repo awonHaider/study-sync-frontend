@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../Layout/Homepage/header";
-import successIcon from "../../Images/ForgotPasswordPages/successIcon.png";
+import successIcon from "../../Images/ForgotPassword/successIcon.png";
 
 const PassResetSuccess = () => {
   return (

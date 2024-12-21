@@ -1,9 +1,10 @@
 import React from "react";
-import TopStudySessions from "../../Components/MainPage/TopStudySessions.jsx";
-import CreateSession from "../../Components/MainPage/CreateSession.jsx";
-import BookedSessions from "../../Components/MainPage/BookedSessions";
+import { Routes, Route } from "react-router-dom";
 import MainSidebar from "../../Layout/Mainpage/sidebar.jsx";
 import MainHeader from "../../Layout/Mainpage/header.jsx";
+import MainHome from "./MainHome.jsx";
+import MySessions from "./MySessions.jsx";
+import UserSupport from "./UserSupport.jsx";
 
 const MainPage = () => {
   return (
@@ -22,14 +23,12 @@ const MainPage = () => {
               {/* Header for Mainpage */}
               <MainHeader />
 
-              {/* Top Part - Create a Session */}
-              <CreateSession />
-
-              {/* Booked Sessions Section */}
-              <BookedSessions />
-
-              {/* Top Study Session Section */}
-              <TopStudySessions />
+              <Routes>
+                <Route path="/" element={<MainHome />} />
+                <Route path="/home" element={<MainHome />} />
+                <Route path="/my-sessions" element={<MySessions />} />
+                <Route path="/user-support" element={<UserSupport />} />
+              </Routes>
             </div>
           </div>
         </div>

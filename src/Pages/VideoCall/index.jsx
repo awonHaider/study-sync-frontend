@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import imgMainLogo from "../../Images/Logo/studySyncLogo.png";
-import imgUsersMiniIcon from "../../Images/Homepage/usersMiniIcons.png";
 import imgSignalIcon from "../../Images/Homepage/signalIcon.png";
-import imgVideoCallPerson from "../../Images/VideoCallPage/videoCallImage.png";
+import imgVideoCallPerson from "../../Images/VideoCall/videoCallImage.png";
 
 import {
   FaChromecast,

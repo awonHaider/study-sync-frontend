@@ -18,6 +18,7 @@ import SignUpSuccess from "./Pages/SignUp/SignUpSuccess.jsx";
 import VideoCall from "./Pages/VideoCall/";
 import AboutUs from "./Pages/AboutUs/index.jsx";
 import CreateSession from "./Components/MainPage/CreateSession.jsx";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -26,11 +27,12 @@ function App() {
     // <Homepage />
 
     // Not Responsive Pages
-    <MainPage />
+    // <MainPage />
 
+    // <Testing />
     // <AdminDashboard />
 
-    // <VideoCall />
+    <VideoCall />
 
     // Finalized
     // -------------------------------
@@ -46,6 +48,15 @@ function App() {
     // <SetupNewPassword />
     // <SignUpSuccess />
     // <AdminLogIn />
+
+    // <Routes>
+    //   <Route path="/" element={<Homepage />} />
+    //   <Route path="/about-us" element={<AboutUs />} />
+    //   <Route path="/contact-us" element={<ContactUs />} />
+    //   <Route path="/signup" element={<SignUp />} />
+    //   <Route path="/login" element={<LogIn />} />
+    //   <Route path="/signup-success" element={<SignUpSuccess />} />
+    // </Routes>
   );
 }
 

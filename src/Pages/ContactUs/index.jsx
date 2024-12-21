@@ -2,6 +2,7 @@ import React from "react";
 import ReachOutToUs from "../../Components/ContactUs/ReachOutToUs";
 import GetInTouchForm from "../../Components/ContactUs/GetInTouchForm";
 import JoinUs from "../../Components/Common/JoinUs";
+import Layout from "../../Layout/Homepage";
 
 const ContactUs = () => {
   return (

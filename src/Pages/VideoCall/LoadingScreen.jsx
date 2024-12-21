@@ -1,7 +1,6 @@
 import React from "react";
 import imgSignalIcon from "../../Images/Homepage/signalIcon.png";
-import imgVideoCallPerson from "../../Images/VideoCallPage/videoCallImage.png";
-
+import imgVideoCallPerson from "../../Images/VideoCall/videoCallImage.png";
 import { FaChromecast } from "react-icons/fa";
 import { MdOutlineVideoCameraBack } from "react-icons/md";
 import { ImPhoneHangUp } from "react-icons/im";

@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../../Layout/Homepage/header";
-import { FaRegEye } from "react-icons/fa6";
-import successIcon from "../../Images/ForgotPasswordPages/successIcon.png";
+import successIcon from "../../Images/ForgotPassword/successIcon.png";
 
 const SignUpSuccessPage = () => {
   return (

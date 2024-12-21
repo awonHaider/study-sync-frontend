@@ -1,6 +1,6 @@
 import React from "react";
-import logInPageImage from "../../Images/LogInPage/logInPageImage.png";
-import signalIcon from "../../Images/LogInPage/signalIcon.png";
+import logInPageImage from "../../Images/LogIn/logInPageImage.png";
+import signalIcon from "../../Images/LogIn/signalIcon.png";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6";
