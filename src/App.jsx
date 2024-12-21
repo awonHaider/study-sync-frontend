@@ -31,14 +31,14 @@ function App() {
     // <Homepage />
 
     // Not Responsive Pages
-    // <MainPage />
+    <MainPage />
 
     // <Testing />
     // <AdminDashboard />
 
-    <AgoraRTCProvider client={client}>
-      <VideoCall />
-    </AgoraRTCProvider>
+    // <AgoraRTCProvider client={client}>
+    //   <VideoCall />
+    // </AgoraRTCProvider>
 
     // <LoadingScreen />
 

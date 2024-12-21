@@ -9,7 +9,7 @@ const ToggleSwitch = () => {
 
   return (
     <div className="flex items-center">
-      <span className="font-semibold text-gray-900 me-3">Schedule</span>
+      <span className="font-semibold text-gray-600 me-3">Schedule</span>
       <label className="inline-flex items-center cursor-pointer">
         <input
           type="checkbox"
@@ -32,7 +32,7 @@ const ToggleSwitch = () => {
           ></div>
         </div>
       </label>
-      <span className="font-semibold text-gray-900 ms-3">Live</span>
+      <span className="font-semibold text-gray-600 ms-3">Live</span>
     </div>
   );
 };
