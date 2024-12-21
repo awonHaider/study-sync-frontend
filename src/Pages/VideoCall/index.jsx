@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import imgMainLogo from "../../Images/Logo/studySyncLogo.png";
+import imgUsersMiniIcon from "../../Images/Homepage/usersMiniIcons.png";
 import imgSignalIcon from "../../Images/Homepage/signalIcon.png";
-import imgVideoCallPerson from "../../Images/VideoCall/videoCallImage.png";
-
+import imgVideoCallPerson from "../../Images/VideoCallPage/videoCallImage.png";
+import {
+  LocalUser,
+  RemoteUser,
+  useIsConnected,
+  useJoin,
+  useLocalMicrophoneTrack,
+  useLocalCameraTrack,
+  usePublish,
+  useRemoteUsers,
+} from "agora-rtc-react";
 import {
   FaChromecast,
   FaRegSmile,
@@ -23,6 +33,26 @@ import { CiFolderOn } from "react-icons/ci";
 import { FiDownload } from "react-icons/fi";
 
 const index = () => {
+  // Static values for agora (replace with dynamic later)
+  const appId = "f61c050e65eb466b8c10aa84fb628020";
+  const channel = "studysync";
+  const token =
+    "007eJxTYDib0M17bdvVl35eVoJp0rKbtjjw2DNabX2wmklAsFNN/4cCQ5qZYbKBqUGqmWlqkomZWZJFsqFBYqKFSVqSmZGFgZHBH77U9IZARoY7Ee2sjAwQCOJzMhSXlKZUFlfmJTMwAAAaaR71";
+
+  // const [isCollapsed, setIsCollapsed] = useState(false);
+  // Agora Hooks
+  const isConnected = useIsConnected();
+  const [calling, setCalling] = useState(true);
+  useJoin({ appid: appId, channel, token }, calling); // Automatically join on load
+  //local user
+  const [micOn, setMic] = useState(true);
+  const [cameraOn, setCamera] = useState(true);
+  const { localMicrophoneTrack } = useLocalMicrophoneTrack(micOn);
+  const { localCameraTrack } = useLocalCameraTrack(cameraOn);
+  usePublish([localMicrophoneTrack, localCameraTrack]);
+  //remote users
+  const remoteUsers = useRemoteUsers();
+
   const [activeTab, setActiveTab] = useState("Chat");
   const [isCollasped, setCollasp] = useState(false);
 
@@ -34,28 +64,68 @@ const index = () => {
     setCollasp(!isCollasped);
   };
 
-  const videocallpersons = () => {
+  // const videocallpersons = () => {
+  //   return (
+  //     <div className="h-48 border-2 rounded-xl relative">
+  //       {/* Video Image */}
+  //       <div className="h-[100%] rounded-xl">
+  //         <img
+  //           src={imgVideoCallPerson}
+  //           alt="Person in Video Call"
+  //           className="h-full w-full object-cover rounded-xl"
+  //         />
+  //       </div>
+
+  //       {/* Blue Icon */}
+  //       <img
+  //         src={imgSignalIcon}
+  //         alt="Signal Icon"
+  //         className="absolute top-2 right-2 h-6 w-6"
+  //       />
+
+  //       {/* Person Name */}
+  //       <span className="absolute bottom-2 left-2 px-3 py-2 rounded-lg text-sm bg-gray-800 text-white">
+  //         Arthur Morgan
+  //       </span>
+  //     </div>
+  //   );
+  // };
+
+  // Render Individual User (Local or Remote)
+  const renderUser = (user, isLocal = false) => {
     return (
-      <div className="h-48 border-2 rounded-xl relative">
-        {/* Video Image */}
+      <div
+        key={user.uid || "local"}
+        className="h-48 border-2 rounded-xl relative"
+      >
+        {/* Video Stream */}
         <div className="h-[100%] rounded-xl">
-          <img
-            src={imgVideoCallPerson}
-            alt="Person in Video Call"
-            className="h-full w-full object-cover rounded-xl"
-          />
+          {isLocal ? (
+            <LocalUser
+              audioTrack={localMicrophoneTrack}
+              cameraOn={cameraOn}
+              micOn={micOn}
+              videoTrack={localCameraTrack}
+              className="h-full w-full object-cover rounded-xl"
+            />
+          ) : (
+            <RemoteUser
+              user={user}
+              className="h-full w-full object-cover rounded-xl"
+            />
+          )}
         </div>
 
-        {/* Blue Icon */}
+        {/* Signal Icon */}
         <img
-          src={imgSignalIcon}
+          src={imgSignalIcon} // Your custom signal icon
           alt="Signal Icon"
           className="absolute top-2 right-2 h-6 w-6"
         />
 
         {/* Person Name */}
         <span className="absolute bottom-2 left-2 px-3 py-2 rounded-lg text-sm bg-gray-800 text-white">
-          Arthur Morgan
+          {isLocal ? "You" : `User ${user.uid}`}
         </span>
       </div>
     );
@@ -64,15 +134,14 @@ const index = () => {
   return (
     <section>
       {/* Collapse Button */}
-      {/* <div className="fixed right-[29%] top-2"> */}
       <div
         className={` absolute top-6 ${
           isCollasped === true ? "right-0 rotate-180" : " right-[29%] "
         }`}
       >
         <button
-          onClick={handelCollaspeClick}
           className=" bg-[#F2F2F2] border border-[#DCDCDC] h-full mr-1 p-1 rounded-full shadow-sm"
+          onClick={handelCollaspeClick}
         >
           <IoIosArrowBack className="text-black rotate-180" />
         </button>
@@ -122,37 +191,25 @@ const index = () => {
 
           {/* Video Section */}
           <div className="grid grid-flow-col auto-cols-fr grid-cols-3 grid-rows-3 px-5 gap-2 pt-2">
-            {/* First Video Person */}
+            {/* Local User */}
+            {isConnected && renderUser({ uid: "local" }, true)}
 
-            {isCollasped === true && (
-              <>
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-              </>
-            )}
+            {/* Remote Users */}
+            {isConnected && remoteUsers.map((user) => renderUser(user, false))}
 
-            {isCollasped === false && (
-              <>
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-                {videocallpersons()}
-              </>
+            {/* Placeholder for additional empty slots */}
+            {Array.from(
+              { length: 9 - (remoteUsers.length + 1) }, // Fill up the grid
+              (_, index) => (
+                <div
+                  key={`placeholder-${index}`}
+                  className="h-48 border-2 rounded-xl bg-gray-100 flex items-center justify-center"
+                >
+                  <span className="text-gray-400 text-sm">
+                    Waiting for user...
+                  </span>
+                </div>
+              )
             )}
           </div>
 
@@ -162,15 +219,25 @@ const index = () => {
               <FaChromecast className="text-2xl" />
             </button>
             <button className="bg-white rounded-full p-2">
-              <MdOutlineVideoCameraBack className="text-2xl" />
+              <MdOutlineVideoCameraBack
+                className="text-2xl"
+                onClick={() => setCamera((a) => !a)}
+              />
             </button>
-            <button className="bg-[#D00101] rounded-full px-4 py-2">
+            <button
+              className="bg-[#D00101] rounded-full px-4 py-2"
+              onClick={() => setCalling((a) => !a)}
+            >
               <ImPhoneHangUp className="text-2xl text-white" />
             </button>
+
             <button className="bg-white rounded-full p-2">
-              <IoMicOutline className="text-2xl" />
+              <IoMicOutline
+                className="text-2xl"
+                onClick={() => setMic((a) => !a)}
+              />
             </button>
-            <button className="bg-white rounded-full p-2">
+            <button className="bg-white rounded-full p-2 ">
               <HiOutlineEllipsisVertical className="text-2xl" />
             </button>
           </div>

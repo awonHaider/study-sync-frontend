@@ -19,6 +19,10 @@ import VideoCall from "./Pages/VideoCall/";
 import AboutUs from "./Pages/AboutUs/index.jsx";
 import CreateSession from "./Components/MainPage/CreateSession.jsx";
 import { Routes, Route } from "react-router-dom";
+import LoadingScreen from "./Pages/VideoCall/LoadingScreen";
+
+import AgoraRTC, { AgoraRTCProvider } from "agora-rtc-react";
+const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
 
 function App() {
   return (
@@ -32,7 +36,11 @@ function App() {
     // <Testing />
     // <AdminDashboard />
 
-    <VideoCall />
+    <AgoraRTCProvider client={client}>
+      <VideoCall />
+    </AgoraRTCProvider>
+
+    // <LoadingScreen />
 
     // Finalized
     // -------------------------------
